@@ -1,7 +1,6 @@
 import requests
 from chessApi import *
 chess_url = "https://api.chess.com/"
-exemple_id_match = "1155655"
 
 
 def getBoardResultsFromPlayer(match, n_team, player):
@@ -9,7 +8,7 @@ def getBoardResultsFromPlayer(match, n_team, player):
     for player_c in players:
         if player_c['username'] == player:
             board = getBoardfromLink(player_c['board'])
-            return board['board_scores'][player]
+            return float(board['board_scores'][player])
 
 
 def getTeamNameFromMatch(match, n_team):
@@ -31,17 +30,7 @@ def getResultsFromMatch(match):
     return [match['teams']['team1']['score'], match['teams']['team2']['score']]
 
 
-def testing():
-    match = getMatch(exemple_id_match)
-    print(match)
-    print(getResultsFromMatch(match))
-    print(getTeamNameFromMatch(match, 1))
-    print(getPlayersFromMatch(match))
-    print(getBoardResultsFromPlayer(match, 1, "f645"))
-
-
 def main():
-    testing()
     pass
 
 

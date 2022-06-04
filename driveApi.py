@@ -17,15 +17,15 @@ def connect():
     return client
 
 
-def getPaxesList(client, nameFiles):
+def getAllTeamPartecipants(client, nameFiles):
     dict = {}
     for name in nameFiles:
-        dict[name] = getPaxList(client, name)
+        dict[name] = getPartecipants(client, name)
         time.sleep(3)
     return dict
 
 
-def getPaxList(client, nameFile):
+def getPartecipants(client, nameFile):
     sheet = opensheet(client, nameFile)
     sheet_inst = sheet.get_worksheet(0)
     rows = sheet_inst.get_all_records(head=2)
